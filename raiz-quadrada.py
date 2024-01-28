@@ -7,7 +7,7 @@ sqrt_2 = 1.41421356
 def criaArray(delta, tamanhoArray):
     lista = [round(i * delta, 2) for i in range(int(tamanhoArray / delta) + 1)]
     return lista
-
+# saddasda
 def ehPar(num):
     if num % 2 == 0:
         return True
