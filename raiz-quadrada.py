@@ -1,18 +1,11 @@
 import math
 import matplotlib.pyplot
-import itertools
 
 sqrt_2 = 1.4142135623730950488016887242097
 
 def criaArray(delta, tamanhoArray):
     lista = [round(i * delta, 2) for i in range(int(tamanhoArray / delta) + 1)]
     return lista
-# saddasda
-def ehPar(num):
-    if num % 2 == 0:
-        return True
-    else:
-        return False
 
 def retorna_2_potencia_K(k):
     if k < 0:
@@ -21,9 +14,9 @@ def retorna_2_potencia_K(k):
         return 1
     elif k == 1:
         return sqrt_2
-    elif ehPar(k):
+    elif k % 2 == 0:
         return (2 ** (k/2))
-    elif not ehPar(k):
+    elif not (k % 2 == 0):
         return (sqrt_2 * (2 **((k-1) / 2)))
         
 def calcula_k(num):
@@ -52,9 +45,6 @@ def arrayMySqrt():
 
         raizQuadrada = sqrt_1f * sqrt_2_k
 
-        # print(k, f, sqrt_1f, sqrt_2_k, raizQuadrada)
-        
-        
         listaAux.append(raizQuadrada)
         
     return listaAux
@@ -68,7 +58,6 @@ def arraySqrtPY():
     
     return listaAux
 
-
 def criaArrayErro(sqrtX, mySqrtX):
 
     arrayErro = []
@@ -78,18 +67,9 @@ def criaArrayErro(sqrtX, mySqrtX):
     
     return arrayErro
 
-
-
 lista_mySqrt = arrayMySqrt()
 lista_pySqrt = arraySqrtPY()
 lista_erro = criaArrayErro(lista_pySqrt, lista_mySqrt)
 
-print(lista_mySqrt)
-print(lista_pySqrt)
-print(lista_erro)
-print(lista)
-
 matplotlib.pyplot.plot(lista, lista_erro)
 matplotlib.pyplot.show()
-
-
