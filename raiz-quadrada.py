@@ -2,7 +2,7 @@ import math
 import matplotlib.pyplot
 import itertools
 
-sqrt_2 = 1.41421356
+sqrt_2 = 1.4142135623730950488016887242097
 
 def criaArray(delta, tamanhoArray):
     lista = [round(i * delta, 2) for i in range(int(tamanhoArray / delta) + 1)]
