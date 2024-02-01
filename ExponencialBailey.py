@@ -3,6 +3,10 @@ import matplotlib.pyplot
 import numpy as np
 
 ln2 = 0.6931471805599453
+#e^x = (2*n) * (y^r)**256
+#se n>1 entao n<<1 senao 1/n<<1
+#r = (x-nLn2)/256
+#y^r = 1+x(1+x(1/2+x(1/6+x/24)))
 
 def array_calcular_ex(inicio, fim, step):
     x_values = [inicio + step * i for i in range(int((fim - inicio) / step) + 1)]
