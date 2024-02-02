@@ -23,7 +23,9 @@ def calcula_k(num):
     if num == 0.0:
         return 0.0
     else:
-        return math.log2(num)
+        man, exp = math.frexp(num)
+        man, exp = man*2, exp-1
+        return exp
     
 delta = float(input('Insira o valor de delta: '))
 tamanhoArray = float(input('Insira o tamanho da Array: '))
@@ -35,18 +37,21 @@ def arrayMySqrt():
 
     for x in lista:
 
-        k = math.floor(calcula_k(x))
+        if x == 0:
+            listaAux.append(0)
+        else:
+            k = math.floor(calcula_k(x))
 
-        f = (x/(2 ** k)) - 1
+            f = (x/(2 ** k)) - 1
 
-        sqrt_1f = 1 + (f/2) * (1 - (f/(4 + (2 * f))))
+            sqrt_1f = 1 + (f/2) * (1 - (f/(4 + (2 * f))))
 
-        sqrt_2_k = retorna_2_potencia_K(k)
+            sqrt_2_k = retorna_2_potencia_K(k)
 
-        raizQuadrada = sqrt_1f * sqrt_2_k
+            raizQuadrada = sqrt_1f * sqrt_2_k
 
-        listaAux.append(raizQuadrada)
-        
+            listaAux.append(raizQuadrada)
+
     return listaAux
 
 def arraySqrtPY():
