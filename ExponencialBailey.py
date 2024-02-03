@@ -2,6 +2,10 @@ import math
 import matplotlib.pyplot
 import numpy as np
 
+#e^x = (2^n) * (e^r)^256
+# n = ceil(x/ln2 -1/2)
+# r = (x-n*Ln2)/256
+#2^n = 1<<n se n>=0
 ln2 = 0.6931471805599453
 
 def array_calcular_ex(inicio, fim, step):
@@ -16,20 +20,24 @@ def array_calcular_ex(inicio, fim, step):
         if n>= 0:
             dois_n = 1<<n
         r = (x - (n * ln2))/ 256
+
+        #usar a serie de taylor para calcular e^x,porem percorrer a série do menor numero somando até o maior
+        #para aumentar a precisão
         def exponencial(x):
             resultado = 0
-            for n in range(100):
+            for n in range(16,-1,-1):
                 resultado += x ** n / factorial(n)
             return resultado
         def factorial(n):
-            if n == 0:
-                return 1
-            else:
-                return n * factorial(n-1)
+            resultado = 1
+            for i in range(1, n + 1):
+                resultado *= i
+            return resultado
+        
         exponencial = exponencial(r)
         print('r',r)
         print('exp',exponencial)
-        resultado = (dois_n) * (exponencial)**(256)
+        resultado = (dois_n) * ((exponencial)**(256))
         print('resultado',resultado)
         valores_resultados.append(resultado)
     
