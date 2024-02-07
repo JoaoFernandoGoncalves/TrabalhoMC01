@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 
 LUTk = [
     
-    {"K": 0.6931471805599453},
+    # {"K": 0.6931471805599453},
     {'K': 0.4054651081081644},
     {'K': 0.22314355131420976},
     {'K': 0.11778303565638346},
@@ -62,7 +62,7 @@ LUTk = [
 ]
 LUTek = [
 
-    {"eK": 2},
+    # {"eK": 2},
     {"eK": 1.5},
     {"eK": 1.25},
     {"eK": 1.125},
@@ -128,12 +128,12 @@ LUTek = [
 
 
 
-def procuraIndiceK(x):
+def procurarIdeK(x):
     for i in range(len(LUTk)):
         if LUTk[i]["K"] <= x:
             return i
 
-def expNiceNumbers(inicio, fim, step):
+def exponencialLUT(inicio, fim, step):
     x_values = [inicio + step * i for i in range(int((fim - inicio) / step) + 1)]
     valores_resultados = []
     for x in x_values:
@@ -141,7 +141,7 @@ def expNiceNumbers(inicio, fim, step):
         y = 1
 
         while x1 > 0:
-            indicek = procuraIndiceK(x1)
+            indicek = procurarIdeK(x1)
             
             if indicek is None:
                 break
@@ -163,7 +163,7 @@ def array_valor(inicio, fim, step):
 inicio = 0
 fim = 10
 step = 0.05
-solucoes = expNiceNumbers(inicio, fim, step)
+solucoes = exponencialLUT(inicio, fim, step)
 print(len(solucoes))
 array_valores = array_valor(inicio, fim, step)
 
